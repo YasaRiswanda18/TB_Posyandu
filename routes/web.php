@@ -3,19 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnakController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\AuthController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Route untuk autentikasi
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/', [AnakController::class, 'index']);
+// Route yang memerlukan autentikasi
+Route::middleware('auth')->group(function () {
+    // Route utama setelah login
+    Route::get('/', [AnakController::class, 'index'])->name('home');
 
-Route::resource('anak', AnakController::class);
-Route::resource('obat', ObatController::class);
+    // Route untuk anak
+    Route::resource('anak', AnakController::class);
+
+    // Route untuk obat
+    Route::resource('obat', ObatController::class);
+});

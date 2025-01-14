@@ -7,13 +7,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(135deg,rgb(166, 178, 255) 0%,rgb(147, 97, 255) 100%); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(135deg, rgb(173, 216, 230) 0%, rgb(144, 202, 249) 100%); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <div class="container">
             <a class="navbar-brand fw-bold text-white" href="/">Posyandu Ceria</a>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('anak.index') }}">Data Anak</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{{ route('obat.index') }}">Data Obat</a></li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="dataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Data Management
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dataDropdown">
+                            <li><a class="dropdown-item" href="{{ route('anak.index') }}">Data Anak</a></li>
+                            <li><a class="dropdown-item" href="{{ route('obat.index') }}">Data Obat</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="container mt-5">
@@ -21,6 +33,8 @@
             @yield('content')
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
@@ -37,7 +51,7 @@
     }
 
     .table {
-        background-color: #BBDEFB;
+        background-color: #E1F5FE;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         overflow: hidden;
@@ -49,18 +63,31 @@
     }
 
     .btn-primary {
-        background-color: #42A5F5;
-        border-color: #42A5F5;
+        background-color: #29B6F6;
+        border-color: #29B6F6;
     }
 
     .btn-primary:hover {
-        background-color: #1E88E5;
-        border-color: #1E88E5;
+        background-color: #0288D1;
+        border-color: #0288D1;
     }
 
     table td {
         vertical-align: middle;
     }
+
+    .navbar-nav .dropdown-menu {
+        background: #E3F2FD;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item {
+        color: #1E88E5;
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item:hover {
+        background-color: #BBDEFB;
+        color: #0D47A1;
+    }
 </style>
-
-
